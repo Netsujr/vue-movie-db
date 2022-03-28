@@ -4,7 +4,7 @@
     <div class="feature-card">
       <router-link to="/movie/tt0409591">
         <img
-          src="https://image.tmdb.org/t/p/w500/8uO0gUM8aNqYLs1OsTBQiXu0fEv.jpg"
+          src="../assets/chiba.png"
           alt=""
           class="featured-img"
         />
