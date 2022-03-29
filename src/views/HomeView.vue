@@ -14,11 +14,34 @@
         </div>
       </router-link>
     </div>
+    <form @submit.prevent='SearchMovies()' class="search-box">
+      <input type="text" v-model="search" placeholder="Search..." />
+      <button type="submit" value="Search">Search</button>
+    </form>
+    <div class="movies-list">Movies</div>
   </div>
 </template>
 
 <script>
-export default {};
+import { ref } from 'vue';
+
+export default {
+  setup() {
+    const search = ref('');
+    const movies = ref([]);
+    const SearchMovies = () => {
+      if (search.value != "") {
+        console.log(search.value);
+      }
+    }
+
+    return {
+      search,
+      movies,
+      SearchMovies,
+    };
+  },
+};
 </script>
 
 <style lang="scss">
@@ -26,7 +49,7 @@ export default {};
   .feature-card {
     position: relative;
 
-    .feratured-img {
+    .featured-img {
       display: block;
       width: 100%;
       height: 300px;
@@ -56,5 +79,30 @@ export default {};
 
     }
   }
+  .search-box {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+
+    input {
+      flex: 1;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      outline: none;
+    }
+
+    button {
+      padding: 8px;
+      border: none;
+      border-radius: 4px;
+      outline: none;
+      background-color: #4caf50;
+      color: #fff;
+      cursor: pointer;
+    }
+  }
 }
+
+
 </style>
