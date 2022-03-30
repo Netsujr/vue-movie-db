@@ -1,9 +1,12 @@
 <template>
   <div class="home">
-    Home
     <div class="feature-card">
       <router-link to="/movie/tt0409591">
-        <img src="../assets/chiba.png" alt="" class="featured-img" />
+        <img
+          src="https://m.media-amazon.com/images/M/MV5BZmQ5NGFiNWEtMmMyMC00MDdiLTg4YjktOGY5Yzc2MDUxMTE1XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_SX300.jpg"
+          alt=""
+          class="featured-img"
+        />
         <div class="detail">
           <h3>Naruto</h3>
           <p>Description Goes here</p>
@@ -12,7 +15,7 @@
     </div>
     <form @submit.prevent="SearchMovies()" class="search-box">
       <input type="text" v-model="search" placeholder="Search..." />
-      <button type="submit" value="Search">Search</button>
+      <input type="submit" value="Search" />
     </form>
     <div class="movies-list">
       <div class="movie" v-for="movie in movies" :key="movie.imdbID">
@@ -61,6 +64,7 @@ export default {
 
 <style lang="scss">
 .home {
+
   .feature-card {
     position: relative;
 
@@ -74,46 +78,71 @@ export default {
 
     .detail {
       position: absolute;
-      bottom: 0;
       left: 0;
       right: 0;
-      background-color: rgba(0, 0, 0, 0.5);
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.6);
       padding: 16px;
       z-index: 1;
 
       h3 {
         color: #fff;
-        font-size: 1.5rem;
-        margin-bottom: 8px;
+        margin-bottom: 16px;
       }
 
       p {
         color: #fff;
-        font-size: 1rem;
       }
     }
   }
   .search-box {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    margin-bottom: 16px;
+    padding: 16px;
 
     input {
-      flex: 1;
-      padding: 8px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      outline: none;
-    }
-
-    button {
-      padding: 8px;
+      display: block;
+      appearance: none;
       border: none;
-      border-radius: 4px;
       outline: none;
-      background-color: #4caf50;
-      color: #fff;
-      cursor: pointer;
+      background: none;
+
+      &[type="text"] {
+        width: 100%;
+        color: #fff;
+        background-color: #496583;
+        font-size: 20px;
+        padding: 10px 16px;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        transition: 0.4s;
+
+        &::placeholder {
+          color: #f3f3f3;
+        }
+
+        &:focus {
+          box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+        }
+      }
+
+      &[type="submit"] {
+        width: 80%;
+        max-width: 300px;
+        background-color: #42b883;
+        padding: 16px;
+        border-radius: 8px;
+        color: #fff;
+        font-size: 20px;
+        text-transform: uppercase;
+        transition: 0.4s;
+
+        &:active {
+          background-color: #3b8070;
+        }
+      }
     }
   }
 
@@ -121,23 +150,28 @@ export default {
     display: flex;
     flex-wrap: wrap;
     margin: 0px 8px;
+
     .movie {
       max-width: 50%;
       flex: 1 1 50%;
       padding: 16px 8px;
+
       .movie-link {
         display: flex;
         flex-direction: column;
         height: 100%;
+
         .product-image {
           position: relative;
           display: block;
+
           img {
             display: block;
             width: 100%;
             height: 275px;
             object-fit: cover;
           }
+
           .type {
             position: absolute;
             padding: 8px 16px;
@@ -148,6 +182,7 @@ export default {
             text-transform: capitalize;
           }
         }
+
         .detail {
           background-color: #496583;
           padding: 16px 8px;
@@ -157,6 +192,7 @@ export default {
             color: #aaa;
             font-size: 14px;
           }
+
           h3 {
             color: #fff;
             font-weight: 600;
