@@ -3,47 +3,50 @@
     Home
     <div class="feature-card">
       <router-link to="/movie/tt0409591">
-        <img
-          src="../assets/chiba.png"
-          alt=""
-          class="featured-img"
-        />
+        <img src="../assets/chiba.png" alt="" class="featured-img" />
         <div class="detail">
           <h3>Naruto</h3>
           <p>Description Goes here</p>
         </div>
       </router-link>
     </div>
-    <form @submit.prevent='SearchMovies()' class="search-box">
+    <form @submit.prevent="SearchMovies()" class="search-box">
       <input type="text" v-model="search" placeholder="Search..." />
       <button type="submit" value="Search">Search</button>
     </form>
     <div class="movies-list">
       <div class="movie" v-for="movie in movies" :key="movie.imdbID">
-        {{ movie.Title }}
+        <router-link :to="'/movie/' + movie.imdbID" class="movie-link">
+          <img :src="movie.Poster" alt="moviePoster" class="movie-img" />
+          <p class="type">{{ movie.Type }}</p>
+          <div class="movie-detail">
+            <h3>{{ movie.Title }}</h3>
+            <p>{{ movie.Year }}</p>
+          </div>
+        </router-link>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { ref } from 'vue';
-import env from '@/env';
+import { ref } from "vue";
+import env from "@/env";
 
 export default {
   setup() {
-    const search = ref('');
+    const search = ref("");
     const movies = ref([]);
     const SearchMovies = () => {
       if (search.value != "") {
         fetch(`http://www.omdbapi.com/?apikey=${env.apiKey}&s=${search.value}`)
-        .then(res => res.json())
-        .then(data => {
-          movies.value = data.Search;
-          search.value = "";
-        })
+          .then((res) => res.json())
+          .then((data) => {
+            movies.value = data.Search;
+            search.value = "";
+          });
       }
-    }
+    };
 
     return {
       search,
@@ -86,7 +89,6 @@ export default {
         color: #fff;
         font-size: 1rem;
       }
-
     }
   }
   .search-box {
@@ -113,6 +115,4 @@ export default {
     }
   }
 }
-
-
 </style>
