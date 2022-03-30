@@ -18,7 +18,11 @@
       <input type="text" v-model="search" placeholder="Search..." />
       <button type="submit" value="Search">Search</button>
     </form>
-    <div class="movies-list">Movies</div>
+    <div class="movies-list">
+      <div class="movie" v-for="movie in movies" :key="movie.imdbID">
+        {{ movie.Title }}
+      </div>
+    </div>
   </div>
 </template>
 
