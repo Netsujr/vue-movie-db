@@ -1,6 +1,10 @@
 <template>
   <div class="movie-detail">
     <h2>{{movie.Title}}</h2>
+    <p>{{movie.Year}}</p>
+    <p>{{movie.Runtime}}</p>
+    <img :src="movie.Poster" :alt="movie.Title" class='featured-img'>
+    <p>{{movie.Plot}}</p>
   </div>
 </template>
 
@@ -31,6 +35,29 @@ export default {
 }
 </script>
 
-<style>
+<style lang='scss'>
+.movie-detail {
+  padding: 1rem;
+  /* border: 1px solid #ccc; */
+
+  h2 {
+    color: #333;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+
+  .featured-img {
+    display: block;
+    max-width: 200px;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    color: #333;
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+}
 
 </style>
