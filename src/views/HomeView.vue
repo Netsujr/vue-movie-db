@@ -9,7 +9,7 @@
         />
         <div class="detail">
           <h3>Naruto</h3>
-          <p>Description Goes here</p>
+          <p>Naruto Uzumaki, a mischievous adolescent ninja, struggles as he searches for recognition and dreams of becoming the Hokage, the village's leader and strongest ninja.</p>
         </div>
       </router-link>
     </div>
